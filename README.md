@@ -130,4 +130,4 @@ The framework is distributed under the [MIT License](LICENSE), which permits reu
 
 *Your story. Your canon. Your creative authority.*
 
-![An elderly wizard bookseller in a dark fantasy castle market courtyard filled with many kinds of travelers, creatures, and mechanical beings](assets/Mystic Citadel Bazaar at Dusk.png)
+![An elderly wizard selling books in a dark fantasy castle market](assets/Mystic%20Citadel%20Bazaar%20at%20Dusk.png)
