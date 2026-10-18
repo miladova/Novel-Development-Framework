@@ -1,3 +1,5 @@
+![Novel Development Framework: an illustrated writing desk, story map, and creative development connections](assets/novel-development-framework-banner.webp)
+
 # Novel Development Framework (NDF)
 
 **An open-source, author-controlled framework for writing novels, rebuilding manuscripts, developing fictional universes, and managing multi-book series with AI assistance.**
@@ -59,6 +61,8 @@ These are organizational aids. They do not automatically determine whether a sto
 6. **Draft and revise with traceability.** Check continuity, chronology, voice, and dependencies. Keep revisions and explain significant changes. Approval of prose is not permission to publish it.
 
 The [Constitution](00_Project/Constitution.md) and [agent instructions](AGENTS.md) define the authority boundaries. [Detailed workflows](docs/README.md) explain each stage.
+
+![An elderly wizard studies an ancient manuscript in a candlelit library of towering bookshelves](assets/wizard-library-banner.webp)
 
 ## Quick start
 
