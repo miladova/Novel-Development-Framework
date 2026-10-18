@@ -1,0 +1,19 @@
+# Local generated files and environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.DS_Store
+Thumbs.db
+*.tmp
+~$*
+# Credentials and local-only scratch
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+_private/
+.worktrees/
+.superpowers/
+# This does NOT make manuscript folders private or remove tracked history.

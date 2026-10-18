@@ -1,0 +1,7 @@
+*.md text eol=lf
+*.py text eol=lf
+*.csv text eol=lf
+*.yml text eol=lf
+# Received source bytes must not be normalized by Git.
+_inbox/** -text
+archive/** -text

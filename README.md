@@ -10,149 +10,118 @@ Novel Development Framework (NDF) is a free, open-source system designed to help
 
 Whether you're beginning your first novel, rewriting a manuscript you completed years ago, or managing an interconnected series spanning multiple books, NDF provides a structured environment for developing your work without losing track of your original ideas, creative decisions, or established story continuity.
 
-Rather than treating a novel as a single document that an AI continuously generates or revises, NDF treats the entire writing project as a living creative archive.
-
-Your manuscript is only one part of that project.
+Rather than treating a novel as a single document that an AI continuously generates or revises, NDF treats the entire writing project as a living creative archive. Your manuscript is only one part of that project.
 
 The framework manages the information behind it: your original inspiration, characters, worldbuilding, timelines, historical drafts, creative discussions, unanswered questions, approved story decisions, and the development process that eventually produces the finished book.
 
 **The author remains the final creative authority. AI assists with research, organization, analysis, questioning, continuity, and drafting, but it never independently decides what becomes official canon.**
 
-## Why Does This Exist?
+In practical terms, NDF is a collection of readable files, reusable templates, documented workflows, and optional local Python utilities. It is **not** a writing application, an AI subscription, or an automatic novel generator. Use it with a text editor, with Git, or with an AI assistant that can read the files you authorize. No AI account or API key is required by the framework itself.
 
-Traditional writing tools are excellent at editing documents, but complex writing projects often involve far more than a manuscript.
+## Why Does This Exist?
 
 Writers accumulate notes, discarded chapters, character histories, alternate plotlines, conversations, research, timelines, and revisions. Over time, important information becomes scattered across documents and conversations.
 
 AI-assisted writing introduces another challenge: an AI may unintentionally invent missing information, contradict earlier decisions, confuse tentative ideas with established facts, or gradually move a story away from the author's original vision.
 
-NDF was designed to address these problems.
+NDF establishes a persistent, organized project record that both the author and AI assistants can reference throughout development. The goal is not to replace the writer, but to preserve their individual voice, ownership, and creative control while making a complex project easier to manage.
 
-It establishes a persistent, organized project record that both the author and AI assistants can reference throughout the development process.
+## Start here
 
-The goal is not to replace the writer.
+Read the [Getting Started guide](docs/GETTING_STARTED.md), the [workflow](docs/WORKFLOW.md), and the [privacy guide](docs/PRIVACY.md). The [template catalog](09_Tools/README.md) lists the forms you can copy as you need them.
 
-**The goal is to give writers the organizational power of a professional creative development environment while preserving their individual voice, ownership, and creative control.**
+**For your own unpublished book, create a separate private repository from the template or start from a downloaded copy. A public fork is for public work, not private manuscript storage.** This upstream repository contains the framework, not anyone's book.
 
-## How Does It Work?
+## What it helps you organize
 
-NDF organizes creative writing into a series of controlled stages.
+| Need | Framework support |
+| --- | --- |
+| Recover an old manuscript | Authorized source inspection, unchanged originals, provenance, and a reconstruction plan |
+| Clarify an undeveloped story | Focused creator interviews, unanswered-question tracking, and intentional mysteries |
+| Stop ideas becoming facts by accident | Separate evidence, AI proposals, author decisions, and explicitly approved canon |
+| Manage characters and worldbuilding | Character, relationship, location, research, and timeline-event templates |
+| Build the narrative | Master outline, scene registry, point-of-view knowledge, and setup/payoff tracking |
+| Maintain a series | Shared canon, book-specific plans, cross-book dependencies, and retcon review |
+| Revise deliberately | Continuity review, voice guidance, revision plans, beta-reader feedback, and session handoffs |
+| Check the project | Offline structural validation, optional progress reports, and named-source checksums |
 
-### 1. Preserve Your Original Work
+These are organizational aids. They do not automatically determine whether a story is coherent or whether an author actually approved a claim.
 
-Import your existing manuscripts, notes, interviews, outlines, and other creative materials.
+## How it works
 
-Original documents are treated as historical source material. They are preserved rather than silently overwritten.
+**Preserve -> Understand -> Review -> Decide -> Plan -> Draft -> Revise**
 
-This is particularly useful when reconstructing an older manuscript. Even abandoned ideas and earlier versions can contain important information about the author's original intentions.
+1. **Preserve your source material.** Keep received manuscripts, notes, and conversations unchanged. An uploaded file is not automatic permission to process it. Inspection, preservation, extraction, and drafting are separate authorized operations.
+2. **Establish your intentions.** Record the book's purpose, voice, genre, narrative scale, themes, and boundaries. A historical chronicle does not have to become a conventional single-protagonist novel.
+3. **Interview the author.** Build focused questions from authorized sources, prior decisions, and unresolved issues. The default is about twenty questions together, but the author can change the format. Preserve uncertainty and original answers.
+4. **Review claims before canon.** Stage source-linked claims, distinguish author statements from AI suggestions, and list contradictions. Only a separate, explicit author decision permits promotion to `02_Canon/`. An interview answer labeled `Established` is not automatic canon.
+5. **Plan before generating major prose.** Build the outline and scene plan. An AI assistant presents a Writing Context Brief, identifies its repository branch and commit, and waits for approval of the requested prose scope.
+6. **Draft and revise with traceability.** Check continuity, chronology, voice, and dependencies. Keep revisions and explain significant changes. Approval of prose is not permission to publish it.
 
-### 2. Establish Your Creative Vision
+The [Constitution](00_Project/Constitution.md) and [agent instructions](AGENTS.md) define the authority boundaries. [Detailed workflows](docs/README.md) explain each stage.
 
-Define the purpose, themes, tone, genre, narrative approach, and intended reader experience of your book or series.
+## Quick start
 
-These documents provide creative direction for future development and help prevent revisions from drifting away from the author's original goals.
+Create your own workspace using GitHub's **Use this template** button when enabled, or **Code -> Download ZIP**. Choose private visibility for unpublished material. Fork this repository when contributing improvements or deliberately working in public.
 
-### 3. Develop the Story Through Author Interviews
+Complete [Vision](00_Project/Vision.md) and [Author Intent](00_Project/Author_Intent.md), then start a [project-initialization interview](09_Tools/Templates/Project_Initialization.md). Copy `05_Books/BOOK_TEMPLATE/` to a new book folder, or use the optional tool:
 
-One of NDF's central features is a structured creator-interview process.
+```bash
+python scripts/create_book.py --id BOOK-001 --title "My Novel"
+# Review the preview. This second command actually creates the folder:
+python scripts/create_book.py --id BOOK-001 --title "My Novel" --apply
+```
 
-An AI assistant can examine authorized project material, identify unanswered questions and contradictions, and prepare focused interviews, typically consisting of approximately 20 questions.
+Track planned scenes in [Scene_Registry.csv](04_Story/Scene_Registry.csv). Use [Plot Threads](04_Story/Plot_Threads.md) for promises and payoffs, and [Series Map](04_Story/Series_Map.md) when books share a universe. There is no requirement to fill every template before writing.
 
-These interviews explore subjects such as:
+## Optional local tools
 
-- Characters, relationships, motivations, and development
-- Plot structure, events, and chronology
-- Worldbuilding and fictional rules
-- Historical continuity and cause-and-effect relationships
-- Unresolved contradictions and missing information
-- Themes, symbolism, and narrative intentions
+Python 3.10 or newer is required only for the utilities. They use the standard library: no package installation, model calls, telemetry, or external service is built into them.
 
-The author's answers are preserved as development records rather than automatically becoming canon.
+```bash
+python scripts/validate_framework.py
+python scripts/project_status.py
+python scripts/project_status.py --words
+python scripts/source_manifest.py "path/to/an/authorized-source.docx"
+python -m unittest discover -s tests -v
+```
 
-### 4. Establish and Protect Canon
+Validation checks required files, basic local Markdown link destinations, record IDs, canon approval metadata, and the scene registry. It does not inspect inbox or archived source contents, active chapter prose, external URLs, or link fragments. Word counting reads active `.md` and `.txt` chapters only when `--words` is supplied. The checksum tool hashes one named source; it does not import, parse, or approve it. See [Tools](docs/TOOLS.md) for limits and examples.
 
-NDF separates different levels of creative authority.
+## Repository map
 
-A brainstorming suggestion is not the same as an author decision. An old manuscript is not necessarily the current version of the story. An AI-generated interpretation is not an established fact.
+```text
+00_Project/       Vision, governance, decisions, questions, and handoffs
+01_Artifacts/     Source-linked recollections and recovered concepts
+02_Canon/         Author-approved facts only; initially empty
+03_Worldbuilding/ Non-canonical character and setting development
+04_Story/         Outlines, scenes, timeline planning, plot threads, series, revisions
+05_Books/         One folder per book, with a reusable blank book template
+06_Research/      Referenced research, separate from fictional truth
+07_Artwork/       Visual-development records and rights notes
+08_Publication/   Release checklists; publication still requires authorization
+09_Tools/         Templates and review checklists
+_inbox/           Unprocessed incoming sources; presence is not permission
+archive/          Unchanged preserved source packages and supplements
+knowledge/        Atomic claim staging and specific review queues
+scripts/          Optional offline utilities
+tests/            Temporary-workspace tests
+```
 
-The framework maintains a dedicated canon system where approved information becomes the authoritative reference for the fictional universe.
+Each collection has a README. Start with the [project dashboard](00_Project/Dashboard.md) and keep the [session handoff](09_Tools/Templates/Session_Handoff.md) current when stopping work.
 
-Canon is only established or changed through an explicit author-controlled approval process.
+## Working with AI
 
-### 5. Construct the Story Architecture
+Ask your assistant to read `AGENTS.md` and the applicable policies first. It must distinguish source material, interpretation, proposed changes, decisions, canon, and manuscript continuity. It must disclose missing repository access rather than inventing context.
 
-Once sufficient information has been developed, the framework supports creating and maintaining:
+Instructions are not a security sandbox and do not guarantee that every assistant will follow them. Review its work. A third-party assistant may send supplied content to its own service; review that service's privacy settings before sharing a manuscript.
 
-- Master timelines
-- Character and relationship records
-- Worldbuilding references
-- Story arcs and plot outlines
-- Chapter and scene plans
-- Continuity and contradiction records
-- Individual book development files
-- Series-wide narrative dependencies
+## Contributing and license
 
-This allows a writer to develop complex storylines while maintaining consistency across chapters, generations, locations, and multiple books.
+Writers, editors, and developers are welcome to improve the framework. Read [CONTRIBUTING](CONTRIBUTING.md), [community expectations](CODE_OF_CONDUCT.md), and the [roadmap](ROADMAP.md). Submit reproducible issues and focused pull requests, not private manuscripts or material you lack permission to share.
 
-### 6. Draft, Review, and Rewrite
-
-NDF supports both original writing and complete manuscript reconstruction.
-
-For rewrites, the existing manuscript serves as historical evidence and a creative foundation rather than something that must be followed without question.
-
-The system helps distinguish which material should be preserved, expanded, revised, reconsidered, or removed.
-
-New prose is developed through author-approved stages, with continuity checks against the established project records.
-
-The framework is designed to support the author's voice and creative intentions, not replace them with a generic AI writing style.
-
-## Designed for AI-Assisted Development
-
-NDF includes an `AGENTS.md` file and supporting instructions that define how compatible AI development assistants should work within the repository.
-
-These instructions establish boundaries for reading source material, conducting interviews, identifying uncertainty, handling contradictions, suggesting changes, and requesting approval.
-
-The framework is Git-based and uses readable Markdown documentation, structured records, templates, and validation utilities.
-
-It is not tied to a particular fictional universe, writing genre, or AI model.
-
-NDF is currently a **repository-based workflow framework**, not a standalone graphical writing application or fully automated manuscript-generation service. Some operations require a connected AI assistant, Git tools, or manual author review.
-
-## Built for Individual Books and Entire Series
-
-NDF supports both standalone novels and interconnected fictional universes.
-
-Each unrelated universe can maintain its own repository, while individual books within a series can share approved worldbuilding, character histories, timelines, and continuity rules.
-
-A writer can maintain separate book manuscripts without losing the broader history and rules governing the series.
-
-## Open Source and Community Development
-
-Novel Development Framework is intended to be freely available to writers, developers, editors, and creative teams.
-
-You can clone the repository, fork it, adapt its structure, improve its workflows, and use it as the foundation for your own writing projects, subject to the repository's license.
-
-Contributions are welcome, including improved interview protocols, workflow documentation, validation tools, templates, and integrations with writing and development software.
-
-The framework does not contain a predefined fictional universe. Each writer supplies their own manuscripts, stories, characters, and creative direction.
-
-## Getting Started
-
-1. Fork, clone, or create your own repository from this framework.
-2. Review `AGENTS.md` and the project Constitution.
-3. Complete the Project Vision and Author Intent documents.
-4. Add your existing source manuscripts, or begin an original project.
-5. Use the project initialization and creator-interview templates.
-6. Review and approve story decisions before adding them to canon.
-7. Develop your timelines, characters, worldbuilding, and story architecture.
-8. Begin drafting or rewriting using your approved project records.
-
-For detailed instructions, consult the workflow documentation and templates provided in the repository.
+The framework is distributed under the [MIT License](LICENSE), which permits reuse, modification, and redistribution subject to its terms. Your independently written stories are not required to be open-sourced simply because you use these tools. Keep them in a separate workspace and state their own rights clearly; see [licensing and ownership](docs/LICENSING.md).
 
 ---
 
-**Novel Development Framework**
-
 *Your story. Your canon. Your creative authority.*
-
-An open-source framework for developing stories that remain coherent, traceable, and faithful to their creator's vision.
